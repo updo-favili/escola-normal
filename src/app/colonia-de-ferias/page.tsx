@@ -6,10 +6,20 @@ import Missoes from '@/components/colonia/Missoes';
 import Valores from '@/components/colonia/Valores';
 import { Metadata } from 'next';
 
+const descricao =
+  'Colônia de Férias da Escola Normal em dezembro: 3 semanas de aventuras, das 7h30 às 11h30. Faça a pré-inscrição e garanta a vaga do seu pequeno herói.';
+
 export const metadata: Metadata = {
   title: 'Colônia de Férias 2026 · Academia de Heróis | Escola Normal',
-  description:
-    'Colônia de Férias da Escola Normal em dezembro: 3 semanas de aventuras, das 7h30 às 11h30. Faça a pré-inscrição e garanta a vaga do seu pequeno herói.',
+  description: descricao,
+  openGraph: {
+    type: 'website',
+    locale: 'pt_BR',
+    siteName: 'Escola Normal Rural de Limoeiro do Norte',
+    title: 'Academia de Heróis · Colônia de Férias 2026 da Escola Normal',
+    description: descricao,
+  },
+  twitter: { card: 'summary_large_image' },
 };
 
 const page = () => (

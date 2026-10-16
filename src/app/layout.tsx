@@ -6,10 +6,29 @@ import { Metadata } from 'next';
 import { ReactNode, Suspense } from 'react';
 import './globals.css';
 
+// Endereço público do site: defina NEXT_PUBLIC_SITE_URL no deploy (a Vercel preenche sozinha).
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : 'http://localhost:3011');
+
+const titulo = 'Matrículas 2027 · Agende sua visita | Escola Normal Rural de Limoeiro do Norte';
+const descricao =
+  'Da Educação Infantil ao Ensino Médio. Agende uma visita à Escola Normal Rural de Limoeiro do Norte e conheça nossos espaços, projetos e equipe.';
+
 export const metadata: Metadata = {
-  title: 'Matrículas 2027 · Agende sua visita | Escola Normal Rural de Limoeiro do Norte',
-  description:
-    'Da Educação Infantil ao Ensino Médio. Agende uma visita à Escola Normal Rural de Limoeiro do Norte e conheça nossos espaços, projetos e equipe.',
+  metadataBase: new URL(siteUrl),
+  title: titulo,
+  description: descricao,
+  openGraph: {
+    type: 'website',
+    locale: 'pt_BR',
+    siteName: 'Escola Normal Rural de Limoeiro do Norte',
+    title: 'Matrículas abertas 2027 · Escola Normal',
+    description: descricao,
+  },
+  twitter: { card: 'summary_large_image' },
 };
 
 export default function RootLayout({
@@ -19,13 +38,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className={`${interTight.variable} ${fredoka.variable} ${caveat.variable} ${barlowCondensed.variable} bg-white antialiased`}>
+      <body
+        className={`${interTight.variable} ${fredoka.variable} ${caveat.variable} ${barlowCondensed.variable} bg-white antialiased`}>
         <AppContextProvider>
           <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light" disableTransitionOnChange>
             <Suspense>
-              <SmoothScrollProvider>
-                {children}
-              </SmoothScrollProvider>
+              <SmoothScrollProvider>{children}</SmoothScrollProvider>
             </Suspense>
           </ThemeProvider>
         </AppContextProvider>
