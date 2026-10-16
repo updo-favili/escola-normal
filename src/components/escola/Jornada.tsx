@@ -1,7 +1,6 @@
 import { segmentos } from '@/data/escola';
-import alunos from '@public/images/escola/alunos.png';
-import Image from 'next/image';
 import RevealAnimation from '../animation/RevealAnimation';
+import CelularVideo from './CelularVideo';
 import Doodle from './Doodle';
 import Kicker from './Kicker';
 
@@ -12,17 +11,24 @@ const Jornada = () => {
       <div className="main-container">
         <div className="flex flex-col items-center gap-y-14 lg:flex-row lg:gap-16 xl:gap-[90px]">
           <RevealAnimation delay={0.2} direction="left" offset={60}>
-            <div className="relative w-full max-w-[520px] lg:max-w-[540px]">
-              <Doodle variant="star" className="text-ns-yellow absolute -top-6 -left-5 z-10 size-12 -rotate-12" />
-              <Doodle variant="arrow" className="text-primary-500 absolute -right-16 -bottom-10 z-10 hidden w-28 rotate-[200deg] lg:block" />
-              <figure className="bg-primary-500 overflow-hidden rounded-[32px] border-4 border-white shadow-[0_20px_50px_-25px_rgba(28,31,92,0.5)]">
-                <Image
-                  src={alunos}
-                  alt="Alunos da Escola Normal com o uniforme da escola"
-                  className="h-auto w-full object-cover"
-                  placeholder="blur"
-                />
-              </figure>
+            <div className="relative w-full max-w-[420px] lg:w-[420px]">
+              <Doodle
+                variant="star"
+                className="text-ns-yellow absolute top-4 left-2 z-10 size-12 -rotate-12 md:left-6"
+              />
+              <Doodle
+                variant="sparkle"
+                className="text-primary-500 absolute right-4 bottom-24 z-10 size-7 md:right-8"
+              />
+              <CelularVideo
+                src="/videos/lab-infantil.mp4"
+                poster="/videos/lab-infantil-capa.jpg"
+                titulo="Crianças da Educação Infantil no laboratório da Escola Normal"
+              />
+              <div className="mt-4 flex items-center justify-center gap-2">
+                <Doodle variant="arrow" className="text-primary-500 w-16 -scale-x-100 rotate-[160deg]" />
+                <span className="hand text-primary-500 text-[24px]">aula no laboratório infantil!</span>
+              </div>
             </div>
           </RevealAnimation>
 
