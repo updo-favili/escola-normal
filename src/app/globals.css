@@ -96,3 +96,26 @@
     animation: none;
   }
 }
+
+/* Gesto de deslizar para cima (mockup de Reels) */
+@keyframes deslizar {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 30px);
+  }
+  20% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+    transform: translate(-50%, -120px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -140px);
+  }
+}
+
+@utility animate-deslizar {
+  animation: deslizar 0.75s ease-in-out forwards;
+}

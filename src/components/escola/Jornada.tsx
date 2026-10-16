@@ -21,13 +21,25 @@ const Jornada = () => {
                 className="text-primary-500 absolute right-4 bottom-24 z-10 size-7 md:right-8"
               />
               <CelularVideo
-                src="/videos/lab-infantil.mp4"
-                poster="/videos/lab-infantil-capa.jpg"
-                titulo="Crianças da Educação Infantil no laboratório da Escola Normal"
+                perfil="escolanormallimoeiro"
+                videos={[
+                  {
+                    src: '/videos/lab-infantil.mp4',
+                    poster: '/videos/lab-infantil-capa.jpg',
+                    titulo: 'Crianças da Educação Infantil no laboratório da Escola Normal',
+                    legenda: 'Pequenos cientistas no laboratório 🔬 descobrir é aprender!',
+                  },
+                  {
+                    src: '/videos/projeto-artefato.mp4',
+                    poster: '/videos/projeto-artefato-capa.jpg',
+                    titulo: 'Apresentação do Projeto ArtEfato na Educação Infantil',
+                    legenda: 'Projeto ArtEfato 🌸 arte, cultura e muita imaginação.',
+                  },
+                ]}
               />
               <div className="mt-4 flex items-center justify-center gap-2">
                 <Doodle variant="arrow" className="text-primary-500 w-16 -scale-x-100 rotate-[160deg]" />
-                <span className="hand text-primary-500 text-[24px]">aula no laboratório infantil!</span>
+                <span className="hand text-primary-500 text-[24px]">um pouco do nosso dia a dia!</span>
               </div>
             </div>
           </RevealAnimation>
