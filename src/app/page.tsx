@@ -1,4 +1,5 @@
 import ChamadaFinal from '@/components/escola/ChamadaFinal';
+import Estrutura from '@/components/escola/Estrutura';
 import Faq from '@/components/escola/Faq';
 import Footer from '@/components/escola/Footer';
 import Header from '@/components/escola/Header';
@@ -16,6 +17,7 @@ const page = () => {
         <Hero />
         <Jornada />
         <Segmentos />
+        <Estrutura />
         <Visita />
         <Faq />
         <Localizacao />

@@ -27,7 +27,14 @@ export interface Segmento {
 export const segmentos: Segmento[] = [
   {
     id: 'infantil',
-    fotos: ['/images/escola/segmentos/infantil/01.jpg', '/images/escola/segmentos/infantil/02.jpg', '/images/escola/segmentos/infantil/03.jpg', '/images/escola/segmentos/infantil/04.jpg', '/images/escola/segmentos/infantil/05.jpg', '/images/escola/segmentos/infantil/06.jpg'],
+    fotos: [
+      '/images/escola/segmentos/infantil/01.jpg',
+      '/images/escola/segmentos/infantil/02.jpg',
+      '/images/escola/segmentos/infantil/03.jpg',
+      '/images/escola/segmentos/infantil/04.jpg',
+      '/images/escola/segmentos/infantil/05.jpg',
+      '/images/escola/segmentos/infantil/06.jpg',
+    ],
     fotoAlt: 'Alunos da Educação Infantil em atividades na escola',
     nome: 'Educação Infantil',
     tabLabel: 'Educação Infantil',
@@ -79,7 +86,14 @@ export const segmentos: Segmento[] = [
   },
   {
     id: 'fund1',
-    fotos: ['/images/escola/segmentos/fund1/01.jpg', '/images/escola/segmentos/fund1/02.jpg', '/images/escola/segmentos/fund1/03.jpg', '/images/escola/segmentos/fund1/04.jpg', '/images/escola/segmentos/fund1/05.jpg', '/images/escola/segmentos/fund1/06.jpg'],
+    fotos: [
+      '/images/escola/segmentos/fund1/01.jpg',
+      '/images/escola/segmentos/fund1/02.jpg',
+      '/images/escola/segmentos/fund1/03.jpg',
+      '/images/escola/segmentos/fund1/04.jpg',
+      '/images/escola/segmentos/fund1/05.jpg',
+      '/images/escola/segmentos/fund1/06.jpg',
+    ],
     fotoAlt: 'Alunos do Fundamental I em atividades na escola',
     nome: 'Ensino Fundamental I',
     tabLabel: 'Fundamental I',
@@ -130,7 +144,14 @@ export const segmentos: Segmento[] = [
   },
   {
     id: 'fund2',
-    fotos: ['/images/escola/segmentos/fund2/01.jpg', '/images/escola/segmentos/fund2/02.jpg', '/images/escola/segmentos/fund2/03.jpg', '/images/escola/segmentos/fund2/04.jpg', '/images/escola/segmentos/fund2/05.jpg', '/images/escola/segmentos/fund2/06.jpg'],
+    fotos: [
+      '/images/escola/segmentos/fund2/01.jpg',
+      '/images/escola/segmentos/fund2/02.jpg',
+      '/images/escola/segmentos/fund2/03.jpg',
+      '/images/escola/segmentos/fund2/04.jpg',
+      '/images/escola/segmentos/fund2/05.jpg',
+      '/images/escola/segmentos/fund2/06.jpg',
+    ],
     fotoAlt: 'Alunos do Fundamental II em atividades na escola',
     nome: 'Ensino Fundamental II',
     tabLabel: 'Fundamental II',
@@ -174,7 +195,12 @@ export const segmentos: Segmento[] = [
   },
   {
     id: 'medio',
-    fotos: ['/images/escola/segmentos/medio/01.jpg', '/images/escola/segmentos/medio/02.jpg', '/images/escola/segmentos/medio/03.jpg', '/images/escola/segmentos/medio/04.jpg'],
+    fotos: [
+      '/images/escola/segmentos/medio/01.jpg',
+      '/images/escola/segmentos/medio/02.jpg',
+      '/images/escola/segmentos/medio/03.jpg',
+      '/images/escola/segmentos/medio/04.jpg',
+    ],
     fotoAlt: 'Alunos do Ensino Médio em atividades na escola',
     nome: 'Ensino Médio',
     tabLabel: 'Ensino Médio',
@@ -233,5 +259,49 @@ export const series: { grupo: string; opcoes: string[] }[] = [
   {
     grupo: 'Ensino Médio',
     opcoes: ['1ª série', '2ª série', '3ª série'],
+  },
+];
+
+// Estrutura da escola (textos do site oficial, seção "Estrutura")
+export const estrutura = [
+  {
+    nome: 'Laboratório Multidisciplinar',
+    texto: 'Aprender na prática o conteúdo trabalhado em sala de aula, investigando e experimentando.',
+    foto: '/images/escola/estrutura/multidisciplinar.jpg',
+  },
+  {
+    nome: 'Laboratório de Anatomia',
+    texto: 'Modelos e peças para estudar o corpo humano na prática, investigando e experimentando.',
+    foto: '/images/escola/estrutura/anatomia.jpg',
+  },
+  {
+    nome: 'EN Maker',
+    texto: 'Espaço compartilhado onde os estudantes colocam em prática ideias e criações inovadoras, partindo do zero.',
+    foto: '/images/escola/estrutura/maker.jpg',
+  },
+  {
+    nome: 'Biblioteca',
+    texto: 'Amplo acervo bibliográfico disponível para todos os alunos.',
+    foto: '/images/escola/estrutura/biblioteca.jpg',
+  },
+  {
+    nome: 'Museu',
+    texto: 'Um museu nas instalações da escola, com a história da Escola Normal.',
+    foto: '/images/escola/estrutura/museu.jpg',
+  },
+  {
+    nome: 'Laboratório de Informática',
+    texto: 'Computadores com acesso à internet e equipados com as melhores tecnologias.',
+    foto: '/images/escola/estrutura/informatica.jpg',
+  },
+  {
+    nome: 'Playgrounds',
+    texto: 'Espaços para os momentos de recreação dos alunos.',
+    foto: '/images/escola/estrutura/playgrounds.jpg',
+  },
+  {
+    nome: 'Área de convivência',
+    texto: 'Áreas que promovem a interação social entre os alunos.',
+    foto: '/images/escola/estrutura/convivencia.jpg',
   },
 ];

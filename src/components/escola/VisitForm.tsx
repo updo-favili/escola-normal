@@ -2,6 +2,7 @@
 
 import { series } from '@/data/escola';
 import { cn } from '@/utils/cn';
+import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import { formatPhone, inputClass, pillActive, pillClass } from './formStyles';
 
@@ -12,6 +13,7 @@ const VisitForm = ({ className }: { className?: string }) => {
   const [quantidade, setQuantidade] = useState('1');
   const [periodo, setPeriodo] = useState('Manhã');
   const [telefone, setTelefone] = useState('');
+  const router = useRouter();
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
   const totalFilhos = quantidade === '4+' ? 4 : Number(quantidade);
@@ -34,7 +36,9 @@ const VisitForm = ({ className }: { className?: string }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      setStatus(res.ok ? 'sent' : 'error');
+      if (!res.ok) throw new Error();
+      setStatus('sent');
+      router.push('/obrigado');
     } catch {
       setStatus('error');
     }
@@ -45,7 +49,13 @@ const VisitForm = ({ className }: { className?: string }) => {
       <div className={cn('rounded-4xl bg-white p-8 text-center md:p-11', className)}>
         <span className="bg-ns-yellow text-secondary mx-auto flex size-14 items-center justify-center rounded-full">
           <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
-            <path d="M20 6 9 17l-5-5" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M20 6 9 17l-5-5"
+              stroke="currentColor"
+              strokeWidth={2.4}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </span>
         <h3 className="font-display text-heading-5 mt-6">Pedido de visita recebido!</h3>
@@ -59,7 +69,10 @@ const VisitForm = ({ className }: { className?: string }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className={cn('space-y-5 rounded-4xl bg-white p-6 shadow-[0_30px_60px_-30px_rgba(28,31,92,0.45)] md:p-9', className)}>
+      className={cn(
+        'space-y-5 rounded-4xl bg-white p-6 shadow-[0_30px_60px_-30px_rgba(28,31,92,0.45)] md:p-9',
+        className,
+      )}>
       <div className="space-y-1">
         <p className="font-display text-heading-5 text-secondary font-semibold">Agende sua visita</p>
         <p className="hand text-primary-500 text-[26px]">leva menos de 1 minuto!</p>
@@ -69,7 +82,14 @@ const VisitForm = ({ className }: { className?: string }) => {
         <label htmlFor="responsavel" className="text-tagline-2 text-secondary block font-medium">
           Nome do responsável
         </label>
-        <input id="responsavel" name="responsavel" required autoComplete="name" placeholder="Seu nome" className={inputClass} />
+        <input
+          id="responsavel"
+          name="responsavel"
+          required
+          autoComplete="name"
+          placeholder="Seu nome"
+          className={inputClass}
+        />
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
@@ -93,14 +113,24 @@ const VisitForm = ({ className }: { className?: string }) => {
         </div>
         <div className="space-y-2">
           <label htmlFor="email" className="text-tagline-2 text-secondary block font-medium">
-            E-mail <span className="text-secondary/50 font-normal">(opcional)</span>
+            E-mail
           </label>
-          <input id="email" name="email" type="email" autoComplete="email" placeholder="seu@email.com" className={inputClass} />
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            placeholder="seu@email.com"
+            className={inputClass}
+          />
         </div>
       </div>
 
       <fieldset className="space-y-2">
-        <legend className="text-tagline-2 text-secondary mb-2 block font-medium">Quantos filhos quer matricular?</legend>
+        <legend className="text-tagline-2 text-secondary mb-2 block font-medium">
+          Quantos filhos quer matricular?
+        </legend>
         <div className="flex gap-2">
           {quantidades.map((q) => (
             <button
@@ -122,7 +152,12 @@ const VisitForm = ({ className }: { className?: string }) => {
               {totalFilhos === 1 ? 'Série em 2027' : `Série do ${i + 1}º filho em 2027`}
             </label>
             <div className="relative">
-              <select id={`serie-${i}`} name={`serie-${i}`} required defaultValue="" className={cn(inputClass, 'appearance-none pr-12')}>
+              <select
+                id={`serie-${i}`}
+                name={`serie-${i}`}
+                required
+                defaultValue=""
+                className={cn(inputClass, 'appearance-none pr-12')}>
                 <option value="" disabled>
                   Selecione a série
                 </option>
@@ -143,13 +178,21 @@ const VisitForm = ({ className }: { className?: string }) => {
                 height={8}
                 viewBox="0 0 12 8"
                 fill="none">
-                <path d="m1 1.5 5 5 5-5" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" />
+                <path
+                  d="m1 1.5 5 5 5-5"
+                  stroke="currentColor"
+                  strokeWidth={1.6}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </div>
           </div>
         ))}
         {quantidade === '4+' && (
-          <p className="text-tagline-3 text-secondary/60">Informe os quatro primeiros; os demais combinamos na conversa.</p>
+          <p className="text-tagline-3 text-secondary/60">
+            Informe os quatro primeiros; os demais combinamos na conversa.
+          </p>
         )}
       </div>
 
@@ -181,7 +224,9 @@ const VisitForm = ({ className }: { className?: string }) => {
         {status === 'sending' ? 'Enviando…' : 'Quero agendar minha visita'}
       </button>
       {status === 'error' && (
-        <p className="text-tagline-2 text-center text-red-600">Não foi possível enviar agora. Tente novamente em instantes.</p>
+        <p className="text-tagline-2 text-center text-red-600">
+          Não foi possível enviar agora. Tente novamente em instantes.
+        </p>
       )}
     </form>
   );

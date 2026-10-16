@@ -5,7 +5,7 @@ import Image from 'next/image';
 const HeaderColonia = () => (
   <header className="border-stroke-2/70 fixed inset-x-0 top-0 z-50 border-b bg-white/90 backdrop-blur-md">
     <div className="main-container flex h-[76px] items-center justify-between gap-4 lg:h-[88px]">
-      <a href="#inscricao" className="flex items-center gap-3">
+      <a href="/colonia-de-ferias#inscricao" className="flex items-center gap-3">
         <Image
           src={logoHerois}
           alt="Academia de Heróis · Colônia de Férias 2026"
@@ -20,7 +20,7 @@ const HeaderColonia = () => (
         />
       </a>
       <a
-        href="#inscricao"
+        href="/colonia-de-ferias#inscricao"
         className="bg-heroi-red hover:bg-heroi-red-dark font-heroi rounded-full px-5 py-2.5 text-lg text-white transition-colors duration-300 md:px-7 md:text-xl">
         Garantir vaga
       </a>

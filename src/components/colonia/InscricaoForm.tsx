@@ -2,6 +2,7 @@
 
 import { formatBRL, semanas } from '@/data/colonia';
 import { cn } from '@/utils/cn';
+import { useRouter } from 'next/navigation';
 import { FormEvent, useMemo, useState } from 'react';
 import { formatPhone, inputClass, pillClass } from '../escola/formStyles';
 
@@ -21,6 +22,7 @@ const InscricaoForm = ({ className }: { className?: string }) => {
   const [faltaAluno, setFaltaAluno] = useState(false);
   const [indica, setIndica] = useState(false);
   const [telefone, setTelefone] = useState('');
+  const router = useRouter();
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
   const totalFilhos = quantidade === '4+' ? 4 : Number(quantidade);
@@ -47,6 +49,7 @@ const InscricaoForm = ({ className }: { className?: string }) => {
       origem: 'colonia-de-ferias-2026',
       responsavel: data.get('responsavel'),
       whatsapp: telefone,
+      email: data.get('email'),
       quantidadeFilhos: quantidade,
       criancas: Array.from({ length: totalFilhos }, (_, i) => ({
         nome: data.get(`crianca-${i}`),
@@ -65,7 +68,9 @@ const InscricaoForm = ({ className }: { className?: string }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      setStatus(res.ok ? 'sent' : 'error');
+      if (!res.ok) throw new Error();
+      setStatus('sent');
+      router.push('/colonia-de-ferias/obrigado');
     } catch {
       setStatus('error');
     }
@@ -106,20 +111,21 @@ const InscricaoForm = ({ className }: { className?: string }) => {
         <p className="text-tagline-2 text-secondary/60">Pré-inscrição gratuita e sem pagamento online.</p>
       </div>
 
+      <div className="space-y-2">
+        <label htmlFor="responsavel" className="text-tagline-2 text-secondary block font-medium">
+          Nome do responsável
+        </label>
+        <input
+          id="responsavel"
+          name="responsavel"
+          required
+          autoComplete="name"
+          placeholder="Seu nome"
+          className={inputClass}
+        />
+      </div>
+
       <div className="grid gap-5 sm:grid-cols-2">
-        <div className="space-y-2">
-          <label htmlFor="responsavel" className="text-tagline-2 text-secondary block font-medium">
-            Nome do responsável
-          </label>
-          <input
-            id="responsavel"
-            name="responsavel"
-            required
-            autoComplete="name"
-            placeholder="Seu nome"
-            className={inputClass}
-          />
-        </div>
         <div className="space-y-2">
           <label htmlFor="whatsapp" className="text-tagline-2 text-secondary block font-medium">
             WhatsApp
@@ -135,6 +141,20 @@ const InscricaoForm = ({ className }: { className?: string }) => {
             pattern="\(\d{2}\) \d{4,5}-\d{4}"
             value={telefone}
             onChange={(e) => setTelefone(formatPhone(e.target.value))}
+            className={inputClass}
+          />
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="email" className="text-tagline-2 text-secondary block font-medium">
+            E-mail
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            placeholder="seu@email.com"
             className={inputClass}
           />
         </div>
