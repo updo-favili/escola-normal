@@ -11,6 +11,21 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+const REACT_LAZY_TYPE = Symbol.for('react.lazy');
+
+type LazyNode = { $$typeof: symbol; _payload: unknown; _init: (payload: unknown) => unknown };
+
+// Filhos vindos de Server Components podem chegar como elementos "lazy" (React 19.3+);
+// sem resolver, isValidElement falha e o conteúdo some na hidratação.
+const resolveLazy = <T,>(node: T): T => {
+  let current: unknown = node;
+  while (current && typeof current === 'object' && (current as LazyNode).$$typeof === REACT_LAZY_TYPE) {
+    const lazy = current as LazyNode;
+    current = lazy._init(lazy._payload);
+  }
+  return current as T;
+};
+
 interface RevealAnimationProps {
   children: ReactElement<{
     className?: string;
@@ -139,15 +154,17 @@ const RevealAnimation = ({
     }
   }, [duration, delay, offset, instant, start, end, direction, useSpring, rotation, animationType]);
 
+  const child = resolveLazy(children);
+
   // Early return if children is not valid (after all hooks)
-  if (!children || !React.isValidElement(children)) {
+  if (!child || !React.isValidElement(child)) {
     return null;
   }
 
   // Clone the child element and add the ref, className, and data-ns-animate attribute
-  return cloneElement(children, {
+  return cloneElement(child, {
     ref: elementRef,
-    className: cn(children?.props?.className, className),
+    className: cn(child?.props?.className, className),
     'data-ns-animate': true,
   });
 };

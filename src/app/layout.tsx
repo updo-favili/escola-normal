@@ -3,6 +3,7 @@ import { ThemeProvider } from '@/components/shared/ThemeProvider';
 import { AppContextProvider } from '@/context/AppContext';
 import { barlowCondensed, caveat, fredoka, interTight } from '@/utils/font';
 import { Metadata } from 'next';
+import Script from 'next/script';
 import { ReactNode, Suspense } from 'react';
 import './globals.css';
 
@@ -13,7 +14,9 @@ const siteUrl =
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : 'http://localhost:3011');
 
-const titulo = 'Matrículas 2027 · Agende sua visita | Escola Normal Rural de Limoeiro do Norte';
+const GTM_ID = 'GTM-K22G956T';
+
+const titulo ='Matrículas 2027 · Agende sua visita | Escola Normal Rural de Limoeiro do Norte';
 const descricao =
   'Da Educação Infantil ao Ensino Médio. Agende uma visita à Escola Normal Rural de Limoeiro do Norte e conheça nossos espaços, projetos e equipe.';
 
@@ -40,6 +43,23 @@ export default function RootLayout({
     <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={`${interTight.variable} ${fredoka.variable} ${caveat.variable} ${barlowCondensed.variable} bg-white antialiased`}>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        {/* Google Tag Manager */}
+        <Script id="gtm" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');`}
+        </Script>
         <AppContextProvider>
           <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light" disableTransitionOnChange>
             <Suspense>

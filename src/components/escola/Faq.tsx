@@ -41,7 +41,7 @@ const Faq = () => {
       <div className="main-container">
         <div className="grid grid-cols-12 gap-y-10 lg:gap-x-16">
           <div className="relative col-span-12 space-y-4 text-center lg:col-span-5 lg:text-left">
-            <Doodle variant="arrow-down" className="text-primary-500/70 absolute top-40 left-10 hidden w-14 -rotate-[30deg] lg:block" />
+            <Doodle variant="arrow" className="text-primary-500/70 absolute top-64 right-0 hidden w-28 -rotate-[30deg] lg:block" />
             <RevealAnimation delay={0.2}>
               <Kicker>Dúvidas frequentes</Kicker>
             </RevealAnimation>

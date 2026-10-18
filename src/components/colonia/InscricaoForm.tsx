@@ -1,8 +1,8 @@
 'use client';
 
 import { formatBRL, semanas } from '@/data/colonia';
+import { getTrafficData, trackLead } from '@/utils/analytics';
 import { cn } from '@/utils/cn';
-import { useRouter } from 'next/navigation';
 import { FormEvent, useMemo, useState } from 'react';
 import { formatPhone, inputClass, pillClass } from '../escola/formStyles';
 
@@ -22,7 +22,6 @@ const InscricaoForm = ({ className }: { className?: string }) => {
   const [faltaAluno, setFaltaAluno] = useState(false);
   const [indica, setIndica] = useState(false);
   const [telefone, setTelefone] = useState('');
-  const router = useRouter();
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
   const totalFilhos = quantidade === '4+' ? 4 : Number(quantidade);
@@ -60,6 +59,7 @@ const InscricaoForm = ({ className }: { className?: string }) => {
       pagamento,
       indicacaoAmigo: indica ? data.get('amigo') : null,
       valorEstimado: estimativa,
+      trafego: getTrafficData(),
     };
     setStatus('sending');
     try {
@@ -69,8 +69,8 @@ const InscricaoForm = ({ className }: { className?: string }) => {
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error();
+      trackLead('colonia');
       setStatus('sent');
-      router.push('/colonia-de-ferias/obrigado');
     } catch {
       setStatus('error');
     }

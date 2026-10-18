@@ -1,8 +1,8 @@
 'use client';
 
 import { series } from '@/data/escola';
+import { getTrafficData, trackLead } from '@/utils/analytics';
 import { cn } from '@/utils/cn';
-import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import { formatPhone, inputClass, pillActive, pillClass } from './formStyles';
 
@@ -13,7 +13,6 @@ const VisitForm = ({ className }: { className?: string }) => {
   const [quantidade, setQuantidade] = useState('1');
   const [periodo, setPeriodo] = useState('Manhã');
   const [telefone, setTelefone] = useState('');
-  const router = useRouter();
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
   const totalFilhos = quantidade === '4+' ? 4 : Number(quantidade);
@@ -28,6 +27,7 @@ const VisitForm = ({ className }: { className?: string }) => {
       quantidadeFilhos: quantidade,
       series: Array.from({ length: totalFilhos }, (_, i) => data.get(`serie-${i}`)),
       periodo,
+      trafego: getTrafficData(),
     };
     setStatus('sending');
     try {
@@ -37,8 +37,8 @@ const VisitForm = ({ className }: { className?: string }) => {
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error();
+      trackLead('matricula');
       setStatus('sent');
-      router.push('/obrigado');
     } catch {
       setStatus('error');
     }
