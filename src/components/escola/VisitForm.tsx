@@ -212,11 +212,6 @@ const VisitForm = ({ className }: { className?: string }) => {
         </div>
       </fieldset>
 
-      <label className="text-tagline-3 text-secondary/60 flex cursor-pointer items-start gap-3">
-        <input type="checkbox" required className="accent-primary-500 mt-0.5 size-4 shrink-0" />
-        Autorizo a Escola Normal a entrar em contato pelo WhatsApp sobre matrículas.
-      </label>
-
       <button
         type="submit"
         disabled={status === 'sending'}

@@ -345,11 +345,6 @@ const InscricaoForm = ({ className }: { className?: string }) => {
         </p>
       </div>
 
-      <label className="text-tagline-3 text-secondary/60 flex cursor-pointer items-start gap-3">
-        <input type="checkbox" required className="accent-heroi-red mt-0.5 size-4 shrink-0" />
-        Autorizo a Escola Normal a entrar em contato pelo WhatsApp sobre a Colônia de Férias.
-      </label>
-
       <button
         type="submit"
         disabled={status === 'sending'}
