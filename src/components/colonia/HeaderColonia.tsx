@@ -5,18 +5,18 @@ import Image from 'next/image';
 const HeaderColonia = () => (
   <header className="border-stroke-2/70 fixed inset-x-0 top-0 z-50 border-b bg-white/90 backdrop-blur-md">
     <div className="main-container flex h-[76px] items-center justify-between gap-4 lg:h-[88px]">
-      <a href="/colonia-de-ferias#inscricao" className="flex items-center gap-3">
+      <a href="/colonia-de-ferias#inscricao" className="flex items-center gap-2.5 sm:gap-3">
         <Image
           src={logoHerois}
           alt="Academia de Heróis · Colônia de Férias 2026"
-          className="h-11 w-auto lg:h-14"
+          className="h-10 w-auto sm:h-11 lg:h-14"
           priority
         />
-        <span className="bg-stroke-3 hidden h-9 w-px sm:block" />
+        <span className="bg-stroke-3 h-8 w-px sm:h-9" />
         <Image
           src={crest}
           alt="Escola Normal Rural de Limoeiro do Norte"
-          className="hidden h-10 w-auto sm:block lg:h-12"
+          className="h-9 w-auto sm:h-10 lg:h-12"
         />
       </a>
       <a
