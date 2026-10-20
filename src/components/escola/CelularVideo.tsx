@@ -46,6 +46,9 @@ const CelularVideo = ({ videos, perfil, className }: CelularVideoProps) => {
   const [anterior, setAnterior] = useState<number | null>(null);
   const [deslizando, setDeslizando] = useState(false);
   const [mudo, setMudo] = useState(true);
+  // só baixa os vídeos quando o celular chega perto da tela (antes disso, fica só a capa):
+  // no 4G eles disputavam banda com o resto da página logo na abertura
+  const [perto, setPerto] = useState(false);
 
   const tocarAtual = useCallback(() => {
     refs.current.forEach((v, i) => {
@@ -70,12 +73,22 @@ const CelularVideo = ({ videos, perfil, className }: CelularVideoProps) => {
     return () => observer.disconnect();
   }, [tocarAtual]);
 
-  // ao trocar de vídeo, o novo começa do início
+  useEffect(() => {
+    const alvo = caixaRef.current;
+    if (!alvo || perto) return;
+    const observer = new IntersectionObserver(([entry]) => entry.isIntersecting && setPerto(true), {
+      rootMargin: '600px 0px',
+    });
+    observer.observe(alvo);
+    return () => observer.disconnect();
+  }, [perto]);
+
+  // ao trocar de vídeo (ou quando os vídeos acabam de ganhar o src), o atual começa do início
   useEffect(() => {
     const v = refs.current[atual];
     if (v) v.currentTime = 0;
     tocarAtual();
-  }, [atual, tocarAtual]);
+  }, [atual, perto, tocarAtual]);
 
   const avancar = useCallback(
     (comGesto: boolean) => {
@@ -135,11 +148,11 @@ const CelularVideo = ({ videos, perfil, className }: CelularVideoProps) => {
                   ref={(el) => {
                     refs.current[i] = el;
                   }}
-                  src={v.src}
+                  src={perto ? v.src : undefined}
                   poster={v.poster}
                   muted={mudo}
                   playsInline
-                  preload={i === atual ? 'auto' : 'metadata'}
+                  preload={perto && i === atual ? 'auto' : 'none'}
                   aria-label={v.titulo}
                   onEnded={() => i === atual && avancar(true)}
                   className="h-full w-full object-cover"

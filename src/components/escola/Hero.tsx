@@ -27,21 +27,18 @@ const Hero = () => {
                 <Image src={seloMatriculas} alt="Matrículas abertas 2027" className="h-auto w-full" priority />
               </figure>
             </RevealAnimation>
-            <RevealAnimation delay={0.3}>
-              <h1 className="text-accent mx-auto max-w-[620px] font-normal lg:mx-0">
-                Explore um{' '}
-                <span className="hand text-ns-yellow relative inline-block text-[1.4em]">
-                  mundo de conhecimentos
-                  <Doodle variant="underline" className="text-ns-yellow/80 absolute -bottom-2 left-0 h-3 w-full" />
-                </span>
-              </h1>
-            </RevealAnimation>
-            <RevealAnimation delay={0.4}>
-              <p className="text-accent/80 mx-auto max-w-[540px] md:text-lg lg:mx-0">
-                Da Educação Infantil ao Ensino Médio, a Escola Normal acompanha seu filho do primeiro passo ao
-                vestibular. Agende uma visita e conheça de perto nossos espaços, projetos e equipe.
-              </p>
-            </RevealAnimation>
+            {/* título e texto sem animação de entrada: aparecem no primeiro desenho da página (LCP no PageSpeed) */}
+            <h1 className="text-accent mx-auto max-w-[620px] font-normal lg:mx-0">
+              Explore um{' '}
+              <span className="hand text-ns-yellow relative inline-block text-[1.4em]">
+                mundo de conhecimentos
+                <Doodle variant="underline" className="text-ns-yellow/80 absolute -bottom-2 left-0 h-3 w-full" />
+              </span>
+            </h1>
+            <p className="text-accent/80 mx-auto max-w-[540px] md:text-lg lg:mx-0">
+              Da Educação Infantil ao Ensino Médio, a Escola Normal acompanha seu filho do primeiro passo ao
+              vestibular. Agende uma visita e conheça de perto nossos espaços, projetos e equipe.
+            </p>
           </div>
           <div className="col-span-12 lg:col-span-6 lg:row-span-2 lg:self-center xl:col-span-5">
             <RevealAnimation delay={0.4} direction="up" offset={60}>
