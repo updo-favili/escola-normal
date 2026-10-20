@@ -74,7 +74,9 @@ const VisitForm = ({ className }: { className?: string }) => {
         className,
       )}>
       <div className="space-y-1">
-        <p className="font-display text-heading-5 text-secondary font-semibold">Agende sua visita</p>
+        <p className="font-display text-heading-5 text-secondary font-semibold">
+          Preencha o formulário e receba seu desconto
+        </p>
         <p className="hand text-primary-500 text-[26px]">leva menos de 1 minuto!</p>
       </div>
 
