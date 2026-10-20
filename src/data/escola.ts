@@ -297,7 +297,7 @@ export const estrutura = [
   {
     nome: 'Playgrounds',
     texto: 'Espaços para os momentos de recreação dos alunos.',
-    foto: '/images/escola/estrutura/playgrounds-2026.jpg',
+    foto: '/images/escola/estrutura/playground-infantil.jpg',
   },
   {
     nome: 'Área de convivência',
