@@ -1,10 +1,7 @@
-import SmoothScrollProvider from '@/components/shared/SmoothScroll';
-import { ThemeProvider } from '@/components/shared/ThemeProvider';
-import { AppContextProvider } from '@/context/AppContext';
 import { barlowCondensed, caveat, fredoka, interTight } from '@/utils/font';
 import { Metadata } from 'next';
 import Script from 'next/script';
-import { ReactNode, Suspense } from 'react';
+import { ReactNode } from 'react';
 import './globals.css';
 
 // Endereço público do site: defina NEXT_PUBLIC_SITE_URL no deploy (a Vercel preenche sozinha).
@@ -40,7 +37,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
+    <html lang="pt-BR" className="scroll-smooth">
       <body
         className={`${interTight.variable} ${fredoka.variable} ${caveat.variable} ${barlowCondensed.variable} bg-white antialiased`}>
         {/* Google Tag Manager (noscript) */}
@@ -60,13 +57,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','${GTM_ID}');`}
         </Script>
-        <AppContextProvider>
-          <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light" disableTransitionOnChange>
-            <Suspense>
-              <SmoothScrollProvider>{children}</SmoothScrollProvider>
-            </Suspense>
-          </ThemeProvider>
-        </AppContextProvider>
+        {children}
       </body>
     </html>
   );

@@ -39,7 +39,7 @@ const Visita = () => {
             variant="arrow"
             className="text-primary-500 absolute -top-12 left-[calc(66.6%-40px)] z-10 hidden w-20 rotate-3 md:block"
           />
-          {passos.map((p, i) => (
+          {passos.map((p) => (
             <div
               key={p.numero}
               className="border-stroke-2 relative h-full space-y-5 rounded-[24px] border bg-white p-7 md:p-9">

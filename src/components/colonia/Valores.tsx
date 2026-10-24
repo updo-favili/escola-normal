@@ -16,7 +16,7 @@ const Valores = () => (
         </Titulo>
 
         <div className="grid gap-4 md:grid-cols-3">
-          {semanas.map((s, i) => (
+          {semanas.map((s) => (
             <div key={s.id} className="flex h-full items-center gap-4 rounded-[22px] bg-white p-5 md:p-6">
               <span className="bg-heroi-red flex size-12 shrink-0 items-center justify-center rounded-xl text-white">
                 <Icone nome="calendar" className="size-6" />

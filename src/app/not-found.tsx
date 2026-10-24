@@ -1,39 +1,17 @@
-import LinkButton from '@/components/ui/button/LinkButton';
-import { defaultMetadata } from '@/utils/generateMetaData';
-import gradientBg from '@public/images/ns-img-498.png';
-import { Metadata } from 'next';
-import Image from 'next/image';
-
-export const metadata: Metadata = {
-  ...defaultMetadata,
-  title: '404 - Lead Capture || NextSaaS',
-};
+import Link from 'next/link';
 
 const page = () => {
   return (
-    <main className="bg-background-2 dark:bg-background-5">
-      <section className="section-reveal pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-40 xl:pt-60 xl:pb-52">
-        <div className="main-container">
-          <div className="bg-background-3 dark:bg-background-5 dark:border-background-9 relative flex flex-col items-center justify-center overflow-hidden rounded-4xl border-[10px] border-white py-10 pr-2.5 text-center md:py-20 lg:py-[100px]">
-            <figure className="hero-gradient-2 pointer-events-none absolute -top-[45%] -right-[68%] -z-0 h-full w-full -rotate-[68deg] opacity-70 select-none sm:-top-[65%] sm:-right-[48%]">
-              <Image src={gradientBg} alt="gradient" className="rotate-180" />
-            </figure>
-            <h1 className="text-[80px] leading-[1.1] font-medium md:text-[120px] lg:!text-[180px] xl:!text-[200px]">
-              404
-            </h1>
-            <h2 className="pt-6 pb-3">
-              Opps! <br />
-              Lost in the page?
-            </h2>
-            <p className="mb-10 md:mb-14">Don’t worry, we’ll help you find your way</p>
-            <div>
-              <LinkButton href="/" className="btn btn-lg btn-primary hover:btn-secondary dark:hover:btn-accent">
-                Go to Home
-              </LinkButton>
-            </div>
-          </div>
-        </div>
-      </section>
+    <main className="bg-grid-paper flex min-h-screen items-center justify-center px-5 py-20">
+      <div className="text-center">
+        <h1 className="font-display text-primary-500 text-[96px] leading-none font-bold md:text-[140px]">404</h1>
+        <p className="text-secondary mt-4 mb-8 text-lg">Ops! Esta página não existe.</p>
+        <Link
+          href="/"
+          className="bg-primary-500 hover:bg-secondary inline-block rounded-full px-9 py-4 text-lg font-semibold text-white transition-colors duration-300">
+          Voltar para o início
+        </Link>
+      </div>
     </main>
   );
 };
