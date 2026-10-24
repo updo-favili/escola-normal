@@ -7,3 +7,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+## Remotes
+
+- **Regra fixa (Juliana, 24/10/2026): todo commit vai SEMPRE para os dois remotes, agencia (Agencia-UPDO/escola-normal) e favili (updo-favili/escola-normal). Depois de commitar, rode `git push agencia main` e `git push favili main`. Antes de trabalhar, `git fetch agencia favili` e confira se a main local está atualizada.**
