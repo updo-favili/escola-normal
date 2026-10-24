@@ -1,5 +1,4 @@
 import { formasPagamento, formatBRL, horario, semanas } from '@/data/colonia';
-import RevealAnimation from '../animation/RevealAnimation';
 import Icone from './Icone';
 import { Titulo } from './Missoes';
 
@@ -18,18 +17,16 @@ const Valores = () => (
 
         <div className="grid gap-4 md:grid-cols-3">
           {semanas.map((s, i) => (
-            <RevealAnimation key={s.id} delay={0.3 + i * 0.1}>
-              <div className="flex h-full items-center gap-4 rounded-[22px] bg-white p-5 md:p-6">
-                <span className="bg-heroi-red flex size-12 shrink-0 items-center justify-center rounded-xl text-white">
-                  <Icone nome="calendar" className="size-6" />
-                </span>
-                <div>
-                  <p className="font-heroi text-heroi-red text-2xl">{s.nome}</p>
-                  <p className="font-heroi text-heroi-navy text-[28px]">{s.periodo}</p>
-                  {s.observacao && <p className="text-tagline-3 text-secondary/60">{s.observacao}</p>}
-                </div>
+            <div key={s.id} className="flex h-full items-center gap-4 rounded-[22px] bg-white p-5 md:p-6">
+              <span className="bg-heroi-red flex size-12 shrink-0 items-center justify-center rounded-xl text-white">
+                <Icone nome="calendar" className="size-6" />
+              </span>
+              <div>
+                <p className="font-heroi text-heroi-red text-2xl">{s.nome}</p>
+                <p className="font-heroi text-heroi-navy text-[28px]">{s.periodo}</p>
+                {s.observacao && <p className="text-tagline-3 text-secondary/60">{s.observacao}</p>}
               </div>
-            </RevealAnimation>
+            </div>
           ))}
         </div>
         <p className="mt-5 flex items-center justify-center gap-2 text-white/80">
@@ -37,36 +34,34 @@ const Valores = () => (
         </p>
 
         <div className="mt-14 md:mt-20">
-          <RevealAnimation delay={0.2}>
-            <h3 className="font-heroi mb-8 text-center text-[36px] text-white md:text-[44px]">
-              Valores <span className="text-ns-yellow">por semana</span>
-            </h3>
-          </RevealAnimation>
+          <h3 className="font-heroi mb-8 text-center text-[36px] text-white md:text-[44px]">
+            Valores <span className="text-ns-yellow">por semana</span>
+          </h3>
           <div className="grid gap-5 md:grid-cols-3">
             {filhos.map((f, i) => (
-              <RevealAnimation key={f} delay={0.3 + i * 0.1}>
-                <div className={`h-full rounded-[24px] bg-white p-6 md:p-7 ${i === 1 ? 'ring-ns-yellow ring-4' : ''}`}>
-                  <p className="font-heroi text-heroi-navy text-[32px]">{f}</p>
-                  <div className="mt-4 space-y-1">
-                    <p className="text-tagline-3 text-secondary/60 font-semibold tracking-wide uppercase">
-                      1ª e 3ª semana
-                    </p>
-                    <p className="font-heroi text-heroi-red text-[44px]">{formatBRL(semanaCheia.pix[i])}</p>
-                    <p className="text-tagline-2">no PIX ou dinheiro</p>
-                    <p className="text-tagline-2 text-secondary font-medium">
-                      ou {formatBRL(semanaCheia.cartao[i])} no cartão em até 6x
-                    </p>
-                  </div>
-                  <div className="border-stroke-2 mt-5 space-y-1 border-t pt-4">
-                    <p className="text-tagline-3 text-secondary/60 font-semibold tracking-wide uppercase">
-                      2ª semana · 1 dia a menos
-                    </p>
-                    <p className="text-tagline-1 text-secondary font-semibold">
-                      {formatBRL(semanaCurta.pix[i])} PIX/dinheiro · {formatBRL(semanaCurta.cartao[i])} cartão
-                    </p>
-                  </div>
+              <div
+                key={f}
+                className={`h-full rounded-[24px] bg-white p-6 md:p-7 ${i === 1 ? 'ring-ns-yellow ring-4' : ''}`}>
+                <p className="font-heroi text-heroi-navy text-[32px]">{f}</p>
+                <div className="mt-4 space-y-1">
+                  <p className="text-tagline-3 text-secondary/60 font-semibold tracking-wide uppercase">
+                    1ª e 3ª semana
+                  </p>
+                  <p className="font-heroi text-heroi-red text-[44px]">{formatBRL(semanaCheia.pix[i])}</p>
+                  <p className="text-tagline-2">no PIX ou dinheiro</p>
+                  <p className="text-tagline-2 text-secondary font-medium">
+                    ou {formatBRL(semanaCheia.cartao[i])} no cartão em até 6x
+                  </p>
                 </div>
-              </RevealAnimation>
+                <div className="border-stroke-2 mt-5 space-y-1 border-t pt-4">
+                  <p className="text-tagline-3 text-secondary/60 font-semibold tracking-wide uppercase">
+                    2ª semana · 1 dia a menos
+                  </p>
+                  <p className="text-tagline-1 text-secondary font-semibold">
+                    {formatBRL(semanaCurta.pix[i])} PIX/dinheiro · {formatBRL(semanaCurta.cartao[i])} cartão
+                  </p>
+                </div>
+              </div>
             ))}
           </div>
           <div className="mx-auto mt-8 grid max-w-[860px] gap-3 text-center text-white/85 md:grid-cols-2 md:text-left">

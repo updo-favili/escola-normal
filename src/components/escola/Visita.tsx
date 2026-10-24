@@ -1,4 +1,3 @@
-import RevealAnimation from '../animation/RevealAnimation';
 import Doodle from './Doodle';
 import Kicker from './Kicker';
 
@@ -26,30 +25,32 @@ const Visita = () => {
       <Doodle variant="sun" className="text-ns-yellow absolute top-10 left-[6%] hidden size-16 md:block" />
       <div className="main-container">
         <div className="mb-10 space-y-4 text-center md:mb-14">
-          <RevealAnimation delay={0.2}>
-            <Kicker>Como funciona</Kicker>
-          </RevealAnimation>
-          <RevealAnimation delay={0.3}>
-            <h2 className="font-normal">
-              Sua visita em <span className="hand text-primary-500 text-[1.4em]">3 passos</span>
-            </h2>
-          </RevealAnimation>
+          <Kicker>Como funciona</Kicker>
+          <h2 className="font-normal">
+            Sua visita em <span className="hand text-primary-500 text-[1.4em]">3 passos</span>
+          </h2>
         </div>
         <div className="relative grid gap-5 md:grid-cols-3 lg:gap-8">
-          <Doodle variant="arrow" className="text-primary-500 absolute -top-12 left-[calc(33.3%-40px)] z-10 hidden w-20 -rotate-6 md:block" />
-          <Doodle variant="arrow" className="text-primary-500 absolute -top-12 left-[calc(66.6%-40px)] z-10 hidden w-20 rotate-3 md:block" />
+          <Doodle
+            variant="arrow"
+            className="text-primary-500 absolute -top-12 left-[calc(33.3%-40px)] z-10 hidden w-20 -rotate-6 md:block"
+          />
+          <Doodle
+            variant="arrow"
+            className="text-primary-500 absolute -top-12 left-[calc(66.6%-40px)] z-10 hidden w-20 rotate-3 md:block"
+          />
           {passos.map((p, i) => (
-            <RevealAnimation key={p.numero} delay={0.3 + i * 0.1}>
-              <div className="border-stroke-2 relative h-full space-y-5 rounded-[24px] border bg-white p-7 md:p-9">
-                <span className="bg-ns-yellow text-secondary hand flex size-14 -rotate-6 items-center justify-center rounded-full text-[30px]">
-                  {p.numero}
-                </span>
-                <div className="space-y-2">
-                  <h3 className="text-heading-6 text-secondary font-semibold">{p.titulo}</h3>
-                  <p>{p.texto}</p>
-                </div>
+            <div
+              key={p.numero}
+              className="border-stroke-2 relative h-full space-y-5 rounded-[24px] border bg-white p-7 md:p-9">
+              <span className="bg-ns-yellow text-secondary hand flex size-14 -rotate-6 items-center justify-center rounded-full text-[30px]">
+                {p.numero}
+              </span>
+              <div className="space-y-2">
+                <h3 className="text-heading-6 text-secondary font-semibold">{p.titulo}</h3>
+                <p>{p.texto}</p>
               </div>
-            </RevealAnimation>
+            </div>
           ))}
         </div>
       </div>

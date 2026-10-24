@@ -3,7 +3,6 @@ import { formasPagamento, horario } from '@/data/colonia';
 import logoOlimpicos from '@public/images/colonia/logo-olimpicos.png';
 import crest from '@public/images/escola/logo.png';
 import Image from 'next/image';
-import RevealAnimation from '../animation/RevealAnimation';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
 import { Titulo } from './Missoes';
 
@@ -48,51 +47,47 @@ export const FaqColonia = () => (
       <Titulo tag="Dúvidas">
         Antes da <span className="text-heroi-red">missão começar</span>
       </Titulo>
-      <RevealAnimation delay={0.3}>
-        <div>
-          <Accordion className="w-full space-y-3" defaultValue="1">
-            {perguntas.map((item) => (
-              <AccordionItem
-                className="border-stroke-2 rounded-[20px] border bg-white px-5 md:px-6"
-                key={item.id}
-                value={item.id}>
-                <AccordionTrigger
-                  titleClassName="flex-1 text-left sm:text-heading-6 text-tagline-1 font-semibold text-heroi-navy"
-                  className="flex w-full cursor-pointer items-center justify-between gap-4 py-5"
-                  value={item.id}
-                  iconType="arrow">
-                  {item.pergunta}
-                </AccordionTrigger>
-                <AccordionContent value={item.id}>{item.resposta}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </RevealAnimation>
+      <div>
+        <Accordion className="w-full space-y-3" defaultValue="1">
+          {perguntas.map((item) => (
+            <AccordionItem
+              className="border-stroke-2 rounded-[20px] border bg-white px-5 md:px-6"
+              key={item.id}
+              value={item.id}>
+              <AccordionTrigger
+                titleClassName="flex-1 text-left sm:text-heading-6 text-tagline-1 font-semibold text-heroi-navy"
+                className="flex w-full cursor-pointer items-center justify-between gap-4 py-5"
+                value={item.id}
+                iconType="arrow">
+                {item.pergunta}
+              </AccordionTrigger>
+              <AccordionContent value={item.id}>{item.resposta}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
     </div>
   </section>
 );
 
 export const ChamadaColonia = () => (
   <section className="px-3 pb-16 md:px-5 md:pb-20">
-    <RevealAnimation delay={0.2}>
-      <div className="from-heroi-blue to-heroi-navy relative overflow-hidden rounded-[32px] bg-linear-to-br px-6 py-14 text-center md:rounded-[40px] md:py-20">
-        <div aria-hidden className="bg-halftone-light pointer-events-none absolute inset-0" />
-        <span aria-hidden className="bg-heroi-red absolute -top-14 -right-14 size-36 rotate-45" />
-        <span aria-hidden className="bg-heroi-red absolute -bottom-14 -left-14 size-36 rotate-45" />
-        <div className="relative mx-auto max-w-[720px] space-y-5">
-          <h2 className="font-heroi text-[44px] text-white md:text-[64px]">
-            A missão está <span className="text-ns-yellow">prestes a começar!</span>
-          </h2>
-          <p className="text-white/80">Garanta a vaga do seu pequeno herói na Colônia de Férias da Escola Normal.</p>
-          <a
-            href="#inscricao"
-            className="bg-heroi-red hover:bg-heroi-red-dark font-heroi inline-block rounded-full px-10 py-4 text-2xl text-white transition-colors">
-            Garantir minha vaga
-          </a>
-        </div>
+    <div className="from-heroi-blue to-heroi-navy relative overflow-hidden rounded-[32px] bg-linear-to-br px-6 py-14 text-center md:rounded-[40px] md:py-20">
+      <div aria-hidden className="bg-halftone-light pointer-events-none absolute inset-0" />
+      <span aria-hidden className="bg-heroi-red absolute -top-14 -right-14 size-36 rotate-45" />
+      <span aria-hidden className="bg-heroi-red absolute -bottom-14 -left-14 size-36 rotate-45" />
+      <div className="relative mx-auto max-w-[720px] space-y-5">
+        <h2 className="font-heroi text-[44px] text-white md:text-[64px]">
+          A missão está <span className="text-ns-yellow">prestes a começar!</span>
+        </h2>
+        <p className="text-white/80">Garanta a vaga do seu pequeno herói na Colônia de Férias da Escola Normal.</p>
+        <a
+          href="#inscricao"
+          className="bg-heroi-red hover:bg-heroi-red-dark font-heroi inline-block rounded-full px-10 py-4 text-2xl text-white transition-colors">
+          Garantir minha vaga
+        </a>
       </div>
-    </RevealAnimation>
+    </div>
   </section>
 );
 
