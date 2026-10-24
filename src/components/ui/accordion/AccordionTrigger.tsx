@@ -1,9 +1,7 @@
 'use client';
 
 import { cn } from '@/utils/cn';
-import { useGSAP } from '@gsap/react';
-import { gsap } from 'gsap';
-import React, { useRef } from 'react';
+import React from 'react';
 import { useAccordion } from './Accordion';
 
 export interface AccordionTriggerProps {
@@ -31,31 +29,6 @@ const AccordionTrigger: React.FC<AccordionTriggerProps> = ({
   const isActive = activeItem === value;
   const isDisabled = disabled || accordionDisabled;
 
-  const arrowRef = useRef<HTMLDivElement>(null);
-  const plusIconRef = useRef<HTMLDivElement>(null);
-
-  // Handle icon animations with GSAP
-  useGSAP(() => {
-    if (iconType === 'arrow' && arrowRef.current) {
-      gsap.to(arrowRef.current, {
-        rotation: isActive ? -180 : 0,
-        duration: 0.3,
-        ease: 'power2.out',
-      });
-    }
-
-    if (iconType === 'plus' && plusIconRef.current) {
-      const plusSpans = plusIconRef.current.querySelectorAll('span');
-      if (plusSpans.length >= 2) {
-        gsap.to(plusSpans[1], {
-          rotation: isActive ? 0 : 90,
-          duration: 0.3,
-          ease: 'power2.out',
-        });
-      }
-    }
-  }, [isActive, iconType]);
-
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     if (!isDisabled) {
@@ -72,8 +45,11 @@ const AccordionTrigger: React.FC<AccordionTriggerProps> = ({
       case 'arrow':
         return (
           <span
-            ref={arrowRef}
-            className={cn('ml-2.5 block sm:ml-auto stroke-secondary dark:stroke-accent', iconClassName)}
+            className={cn(
+              'stroke-secondary dark:stroke-accent ml-2.5 block transition-transform duration-300 sm:ml-auto',
+              isActive && '-rotate-180',
+              iconClassName,
+            )}
             data-state={isActive ? 'open' : 'closed'}>
             <svg
               data-state={isActive ? 'open' : 'closed'}
@@ -97,11 +73,14 @@ const AccordionTrigger: React.FC<AccordionTriggerProps> = ({
       case 'plus':
         return (
           <span
-            ref={plusIconRef}
             className={cn('ml-auto block', iconClassName)}
             data-state={isActive ? 'open' : 'closed'}>
             <span className="bg-secondary dark:bg-accent block h-0.5 w-4"></span>
-            <span className="bg-secondary dark:bg-accent -mt-0.5 block h-0.5 w-4"></span>
+            <span
+              className={cn(
+                'bg-secondary dark:bg-accent -mt-0.5 block h-0.5 w-4 transition-transform duration-300',
+                !isActive && 'rotate-90',
+              )}></span>
           </span>
         );
 
