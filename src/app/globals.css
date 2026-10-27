@@ -71,6 +71,13 @@
   --color-copa-navy: #12105a;
 }
 
+@utility font-marker {
+  font-family: var(--font-marker), 'Inter Tight', sans-serif;
+  font-weight: 400;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
 /* Retícula de quadrinhos */
 @utility bg-halftone {
   background-image: radial-gradient(rgba(11, 26, 92, 0.12) 1.4px, transparent 1.6px);

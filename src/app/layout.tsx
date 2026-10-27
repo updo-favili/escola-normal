@@ -1,4 +1,4 @@
-import { barlowCondensed, caveat, fredoka, interTight } from '@/utils/font';
+import { barlowCondensed, caveat, fredoka, interTight, permanentMarker } from '@/utils/font';
 import { Metadata } from 'next';
 import Script from 'next/script';
 import { ReactNode } from 'react';
@@ -13,7 +13,7 @@ const siteUrl =
 
 const GTM_ID = 'GTM-K22G956T';
 
-const titulo ='Matrículas 2027 · Agende sua visita | Escola Normal Rural de Limoeiro do Norte';
+const titulo = 'Matrículas 2027 · Agende sua visita | Escola Normal Rural de Limoeiro do Norte';
 const descricao =
   'Da Educação Infantil ao Ensino Médio. Agende uma visita à Escola Normal Rural de Limoeiro do Norte e conheça nossos espaços, projetos e equipe.';
 
@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="scroll-smooth">
       <body
-        className={`${interTight.variable} ${fredoka.variable} ${caveat.variable} ${barlowCondensed.variable} bg-white antialiased`}>
+        className={`${interTight.variable} ${fredoka.variable} ${caveat.variable} ${barlowCondensed.variable} ${permanentMarker.variable} bg-white antialiased`}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe

@@ -1,4 +1,4 @@
-import { Barlow_Condensed, Caveat, Fredoka, Inter_Tight } from 'next/font/google';
+import { Barlow_Condensed, Caveat, Fredoka, Inter_Tight, Permanent_Marker } from 'next/font/google';
 
 const interTight = Inter_Tight({
   subsets: ['latin'],
@@ -34,4 +34,13 @@ const barlowCondensed = Barlow_Condensed({
   preload: false,
 });
 
-export { barlowCondensed, caveat, fredoka, interTight };
+// Título pincelado da Copa EN ("A torcida também ganha!")
+const permanentMarker = Permanent_Marker({
+  subsets: ['latin'],
+  variable: '--font-marker',
+  display: 'swap',
+  weight: ['400'],
+  preload: false,
+});
+
+export { barlowCondensed, caveat, fredoka, interTight, permanentMarker };
