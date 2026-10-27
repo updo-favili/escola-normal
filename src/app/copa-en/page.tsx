@@ -41,8 +41,8 @@ const page = () => (
       />
     </div>
 
-    <div className="relative z-10 px-4 pt-2 pb-12 sm:px-6 xl:ml-[57vw] xl:w-[min(460px,38vw)] xl:px-0 xl:py-10">
-      <CopaForm className="mx-auto max-w-[520px]" />
+    <div className="relative z-10 px-4 pt-2 pb-12 sm:px-6 xl:ml-[58vw] xl:w-[min(540px,38vw)] xl:px-0 xl:py-10">
+      <CopaForm className="mx-auto max-w-[540px]" />
     </div>
   </main>
 );
