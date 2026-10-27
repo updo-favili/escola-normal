@@ -95,9 +95,10 @@ const labelEscola: Record<Perfil, string> = {
   visitante: 'Escola (opcional)',
 };
 
-const labelClass = 'text-tagline-2 text-copa-navy mb-2 block font-semibold';
+// No computador (xl) o formulário fica mais compacto; no celular mantém o tamanho confortável para o toque
+const labelClass = 'text-tagline-2 text-copa-navy mb-2 block font-semibold xl:mb-1.5 xl:text-[13px]';
 const campoClass =
-  'border-stroke-3 text-tagline-1 placeholder:text-secondary/45 focus:border-copa-royal text-secondary h-12 w-full rounded-xl border bg-white pr-4 pl-12 font-normal transition-colors focus:outline-none';
+  'border-stroke-3 text-tagline-1 placeholder:text-secondary/45 focus:border-copa-royal text-secondary h-12 w-full rounded-xl xl:h-10 xl:text-sm border bg-white pr-4 pl-12 font-normal transition-colors focus:outline-none';
 const iconeCampo = 'text-secondary/55 pointer-events-none absolute top-1/2 left-4 -translate-y-1/2';
 
 const CopaForm = ({ className }: { className?: string }) => {
@@ -159,11 +160,11 @@ const CopaForm = ({ className }: { className?: string }) => {
     <form
       onSubmit={handleSubmit}
       className={cn(
-        'space-y-4 rounded-3xl bg-white p-6 shadow-[0_30px_60px_-30px_rgba(0,10,60,0.8)] md:p-8',
+        'space-y-4 rounded-3xl bg-white p-6 shadow-[0_30px_60px_-30px_rgba(0,10,60,0.8)] md:p-8 xl:space-y-3 xl:p-6',
         className,
       )}>
       <div>
-        <p className="text-copa-navy text-[28px] leading-[1.05] font-extrabold tracking-tight uppercase md:text-[34px]">
+        <p className="text-copa-navy text-[28px] leading-[1.05] font-extrabold tracking-tight uppercase md:text-[34px] xl:text-[26px]">
           Participe da nossa <span className="text-copa-royal block">ação de brindes!</span>
         </p>
         <svg
@@ -250,7 +251,7 @@ const CopaForm = ({ className }: { className?: string }) => {
                   setFaltaPerfil(false);
                 }}
                 className={cn(
-                  'border-stroke-3 text-tagline-3 sm:text-tagline-2 text-secondary hover:border-copa-royal/50 flex min-h-[60px] cursor-pointer flex-col items-center justify-center gap-1.5 rounded-xl border bg-white px-2 py-2.5 text-center leading-tight transition-colors sm:flex-row sm:gap-2.5 sm:text-left',
+                  'border-stroke-3 text-tagline-3 sm:text-tagline-2 text-secondary hover:border-copa-royal/50 flex min-h-[60px] cursor-pointer flex-col items-center justify-center gap-1.5 rounded-xl border bg-white px-2 py-2.5 text-center leading-tight transition-colors sm:flex-row sm:gap-2.5 sm:text-left xl:min-h-[52px] xl:gap-2 xl:px-2 xl:!text-[12px]',
                   on && 'border-copa-royal bg-copa-royal hover:border-copa-royal text-white',
                   faltaPerfil && 'border-red-500',
                 )}>
@@ -333,7 +334,7 @@ const CopaForm = ({ className }: { className?: string }) => {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="bg-copa-yellow hover:bg-copa-yellow-dark text-copa-navy flex w-full cursor-pointer items-center justify-center gap-3 rounded-full px-8 py-4 text-xl font-extrabold uppercase shadow-[0_10px_24px_-12px_rgba(246,184,32,0.9)] transition-colors duration-300 disabled:opacity-60 md:text-2xl">
+        className="bg-copa-yellow hover:bg-copa-yellow-dark text-copa-navy flex w-full cursor-pointer items-center justify-center gap-3 rounded-full px-8 py-4 text-xl font-extrabold uppercase shadow-[0_10px_24px_-12px_rgba(246,184,32,0.9)] transition-colors duration-300 disabled:opacity-60 md:text-2xl xl:py-3 xl:!text-lg">
         {status === 'sending' ? (
           'Enviando…'
         ) : (

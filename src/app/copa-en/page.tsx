@@ -82,9 +82,9 @@ const page = () => (
       <Pincelada className="text-copa-yellow absolute -right-24 bottom-24 hidden h-16 w-[380px] opacity-60 md:block" />
     </div>
 
-    <div className="relative mx-auto grid max-w-[1480px] items-center gap-8 px-4 pb-12 sm:px-6 xl:min-h-screen xl:grid-cols-[minmax(0,1fr)_minmax(0,540px)] xl:items-start xl:gap-12 xl:px-10 xl:pb-6">
+    <div className="relative mx-auto grid max-w-[1480px] items-center gap-8 px-4 pb-12 sm:px-6 xl:min-h-screen xl:grid-cols-[minmax(0,1fr)_minmax(0,440px)] xl:items-start xl:gap-12 xl:px-10 xl:pb-6">
       <section
-        className="@container relative mx-auto w-full max-w-[900px] text-white xl:max-w-[min(900px,calc((100vh-24px)/1.3))]"
+        className="@container relative mx-auto w-full max-w-[900px] translate-x-[4.5%] text-white xl:max-w-[min(900px,calc((100vh-24px)/1.3))] xl:translate-x-0"
         aria-labelledby="copa-titulo">
         <Image
           src={fotos}
@@ -129,7 +129,7 @@ const page = () => (
             {selos.map((s, i) => (
               <li
                 key={i}
-                className="flex items-center gap-[1.6cqw] rounded-[2cqw] border border-[#2f5fe8]/80 bg-[#04165a]/85 px-[1.8cqw] py-[1.8cqw] shadow-[inset_0_0_24px_rgba(40,90,240,0.25)]">
+                className="flex items-center gap-[1.6cqw] rounded-[2cqw] border border-[#2f5fe8]/80 bg-[#04165a]/85 px-[1.8cqw] py-[1.8cqw] shadow-[inset_0_0_24px_rgba(40,90,240,0.25)] max-sm:flex-col max-sm:text-center">
                 <svg
                   viewBox="0 0 24 24"
                   aria-hidden
