@@ -62,6 +62,14 @@
   line-height: 0.95;
 }
 
+/* =========== Copa EN · cores do logo =========== */
+@theme {
+  --color-copa-yellow: #f6b820;
+  --color-copa-yellow-dark: #e0a10a;
+  --color-copa-blue: #3d3f98;
+  --color-copa-navy: #12105a;
+}
+
 /* Retícula de quadrinhos */
 @utility bg-halftone {
   background-image: radial-gradient(rgba(11, 26, 92, 0.12) 1.4px, transparent 1.6px);

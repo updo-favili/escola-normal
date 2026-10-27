@@ -1,4 +1,4 @@
-type LeadFormType = 'matricula' | 'colonia';
+type LeadFormType = 'matricula' | 'colonia' | 'copa-en';
 
 type DataLayerEvent = {
   event: string;

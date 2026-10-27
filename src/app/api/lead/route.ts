@@ -61,6 +61,10 @@ const toRdTraffic = (trafego: Trafego = {}) => {
   return fields;
 };
 
+// Na Copa EN o e-mail é opcional, mas o RD exige um: usa um endereço provisório ligado ao WhatsApp
+// (o campo cf_copa_en_informou_email = "Não" separa esses leads de quem informou e-mail de verdade).
+const emailProvisorio = (whatsapp: string) => `copaen-${whatsapp.replace(/\D/g, '')}@sem-email.escolanormal.com.br`;
+
 // Monta o payload de conversão do RD Station Marketing (o RD identifica o lead pelo e-mail).
 // Campos padrão: name, email, mobile_phone. Os demais são campos personalizados (cf_...).
 const toRdPayload = (lead: Lead) => {
@@ -70,6 +74,18 @@ const toRdPayload = (lead: Lead) => {
     mobile_phone: lead.whatsapp,
     ...toRdTraffic(lead.trafego as Trafego | undefined),
   };
+
+  if (lead.origem === 'copa-en-2026') {
+    return {
+      conversion_identifier: 'copa-en-2026',
+      ...base,
+      email: lead.email || emailProvisorio(lead.whatsapp),
+      cf_copa_en_perfil: String(lead.perfil ?? ''),
+      cf_copa_en_escola: String(lead.escola ?? ''),
+      cf_copa_en_como_soube: String(lead.comoSoube ?? ''),
+      cf_copa_en_informou_email: lead.email ? 'Sim' : 'Não',
+    };
+  }
 
   if (lead.origem === 'colonia-de-ferias-2026') {
     const criancas = Array.isArray(lead.criancas) ? (lead.criancas as Crianca[]) : [];
@@ -106,7 +122,8 @@ const toRdPayload = (lead: Lead) => {
 
 export async function POST(request: Request) {
   const lead = (await request.json()) as Lead;
-  if (!lead?.responsavel || !lead?.whatsapp || !lead?.email) {
+  const emailOpcional = lead?.origem === 'copa-en-2026';
+  if (!lead?.responsavel || !lead?.whatsapp || (!lead?.email && !emailOpcional)) {
     return NextResponse.json({ ok: false }, { status: 400 });
   }
 
