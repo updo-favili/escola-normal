@@ -53,6 +53,13 @@ const Visita = () => {
             </div>
           ))}
         </div>
+        <div className="mt-10 text-center md:mt-14">
+          <a
+            href="#agendar"
+            className="bg-primary-500 hover:bg-secondary inline-block rounded-full px-9 py-4 text-lg font-bold text-white transition-colors duration-300">
+            Agendar minha visita
+          </a>
+        </div>
       </div>
     </section>
   );
