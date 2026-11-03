@@ -3,12 +3,9 @@
 import { getTrafficData, trackLead } from '@/utils/analytics';
 import { cn } from '@/utils/cn';
 import { FormEvent, useState } from 'react';
-import { formatPhone, inputClass, pillActive, pillClass } from './formStyles';
-
-const periodos = ['Manhã', 'Tarde'];
+import { formatPhone, inputClass } from './formStyles';
 
 const VisitForm = ({ className }: { className?: string }) => {
-  const [periodo, setPeriodo] = useState('Manhã');
   const [telefone, setTelefone] = useState('');
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
@@ -19,7 +16,6 @@ const VisitForm = ({ className }: { className?: string }) => {
       responsavel: data.get('responsavel'),
       whatsapp: telefone,
       email: data.get('email'),
-      periodo,
       trafego: getTrafficData(),
     };
     setStatus('sending');
@@ -123,22 +119,6 @@ const VisitForm = ({ className }: { className?: string }) => {
           />
         </div>
       </div>
-
-      <fieldset className="space-y-2">
-        <legend className="text-tagline-2 text-secondary mb-2 block font-medium">Melhor período para contato</legend>
-        <div className="flex gap-2">
-          {periodos.map((p) => (
-            <button
-              type="button"
-              key={p}
-              aria-pressed={periodo === p}
-              onClick={() => setPeriodo(p)}
-              className={cn(pillClass, periodo === p && pillActive)}>
-              {p}
-            </button>
-          ))}
-        </div>
-      </fieldset>
 
       <button
         type="submit"
