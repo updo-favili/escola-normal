@@ -110,12 +110,14 @@ const toRdPayload = (lead: Lead) => {
     };
   }
 
+  // A LP atual não pergunta filhos nem série; esses campos só vão ao RD quando vierem preenchidos,
+  // para não apagar o que já estiver no cadastro de quem converteu antes.
   const series = Array.isArray(lead.series) ? lead.series.filter(Boolean).join(', ') : '';
   return {
     conversion_identifier: 'matricula-2027-visita',
     ...base,
-    cf_quantidade_de_filhos: String(lead.quantidadeFilhos ?? ''),
-    cf_series_2027: series,
+    ...(lead.quantidadeFilhos ? { cf_quantidade_de_filhos: String(lead.quantidadeFilhos) } : {}),
+    ...(series ? { cf_series_2027: series } : {}),
     cf_periodo_da_visita: String(lead.periodo ?? ''),
   };
 };

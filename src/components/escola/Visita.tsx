@@ -5,7 +5,7 @@ const passos = [
   {
     numero: '01',
     titulo: 'Preencha o formulário',
-    texto: 'Conte quantos filhos e para qual série. Leva menos de um minuto.',
+    texto: 'Deixe seu nome, WhatsApp e e-mail. Leva menos de um minuto.',
   },
   {
     numero: '02',
