@@ -13,9 +13,9 @@ const siteUrl =
 
 const GTM_ID = 'GTM-K22G956T';
 
-const titulo = 'Matrículas 2027 · Agende sua visita | Escola Normal Rural de Limoeiro do Norte';
+const titulo = 'Matrículas 2027 abertas | Escola Normal Rural de Limoeiro do Norte';
 const descricao =
-  'Da Educação Infantil ao Ensino Médio. Agende uma visita à Escola Normal Rural de Limoeiro do Norte e conheça nossos espaços, projetos e equipe.';
+  'Da Educação Infantil ao Ensino Médio. Matrículas 2027 abertas na Escola Normal Rural de Limoeiro do Norte: deixe seu contato e fale com nossa equipe.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

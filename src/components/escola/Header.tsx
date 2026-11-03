@@ -15,7 +15,7 @@ const Header = () => {
         <a
           href="#agendar"
           className="bg-primary-500 hover:bg-secondary rounded-full px-5 py-2.5 text-tagline-2 font-semibold text-white transition-colors duration-300 md:px-7 md:py-3 md:text-tagline-1">
-          Agendar visita
+          Solicitar contato
         </a>
       </div>
     </header>

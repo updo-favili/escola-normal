@@ -1,7 +1,7 @@
 import { ogFontsEscola, ogImage, ogSize } from '@/utils/og';
 import { ImageResponse } from 'next/og';
 
-export const alt = 'Escola Normal Rural de Limoeiro do Norte · Matrículas abertas 2027 · Agende sua visita';
+export const alt = 'Escola Normal Rural de Limoeiro do Norte · Matrículas abertas 2027 · Solicite contato';
 export const size = ogSize;
 export const contentType = 'image/png';
 
@@ -81,7 +81,7 @@ export default async function Image() {
               padding: '8px 26px',
               borderRadius: 999,
             }}>
-            Agende sua visita
+            Solicite contato
           </span>
         </div>
       </div>

@@ -53,9 +53,9 @@ const VisitForm = ({ className }: { className?: string }) => {
             />
           </svg>
         </span>
-        <h3 className="font-display text-heading-5 mt-6">Pedido de visita recebido!</h3>
+        <h3 className="font-display text-heading-5 mt-6">Pedido de contato recebido!</h3>
         <p className="text-secondary/70 mx-auto mt-3 max-w-[340px]">
-          Nossa equipe de matrículas vai falar com você pelo WhatsApp para combinar o melhor dia da visita.
+          Nossa equipe de matrículas vai falar com você pelo WhatsApp em breve.
         </p>
       </div>
     );
@@ -125,7 +125,7 @@ const VisitForm = ({ className }: { className?: string }) => {
       </div>
 
       <fieldset className="space-y-2">
-        <legend className="text-tagline-2 text-secondary mb-2 block font-medium">Melhor período para a visita</legend>
+        <legend className="text-tagline-2 text-secondary mb-2 block font-medium">Melhor período para contato</legend>
         <div className="flex gap-2">
           {periodos.map((p) => (
             <button

@@ -40,7 +40,7 @@ const Hero = () => {
             </h1>
             <p className="text-accent/80 mx-auto max-w-[540px] md:text-lg lg:mx-0">
               Da Educação Infantil ao Ensino Médio, a Escola Normal acompanha seu filho do primeiro passo ao vestibular.
-              Agende uma visita e conheça de perto nossos espaços, projetos e equipe.
+              Deixe seu contato e nossa equipe de matrículas fala com você.
             </p>
           </div>
           <div className="col-span-12 lg:col-span-6 lg:row-span-2 lg:self-center xl:col-span-5">
